@@ -13,6 +13,8 @@ import {useState} from 'react';
 function App() {
   const dispatch = useDispatch();
   const subMenu =  useSelector(state => state.switches);  
+  const console1 = useSelector(state => state.counter.values[1]);
+  console.log(console1);
   console.log(subMenu);
   return (
     <div className="App">

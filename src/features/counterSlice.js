@@ -24,12 +24,12 @@ export const counterSlice = createSlice({
     },
     setValues: (state,action) => {
       const i = action.payload;
-
+      state.values[i.id] = i;
     }
   },
 });
 
-export const { increment, decrement} = counterSlice.actions;
+export const { increment, decrement, setValues} = counterSlice.actions;
 
 
 export default counterSlice.reducer;

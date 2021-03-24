@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
-import { increment, decrement } from './features/counterSlice';
+import { increment, decrement, setValues } from './features/counterSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import store from './app/store';
 
@@ -45,6 +45,12 @@ const ProductElement = (props) => {
     const val = useSelector(state => state.counter.values.stock);
     const dispatch = useDispatch();
     const id = props.id;
+    dispatch(setValues({
+        id : props.id,
+        stock : props.stock,
+        price : props.price,
+        label : props.label
+    }))
     return (
         <div style={productStyle}>
             <Button style={buttonStyle}>Do koszyka</Button>
