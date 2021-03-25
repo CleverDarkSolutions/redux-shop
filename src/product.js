@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { Button } from 'react-bootstrap';
 import { increment, decrement, setValues } from './features/counterSlice';
 import { useDispatch, useSelector } from 'react-redux';
@@ -61,31 +61,37 @@ const ProductElement = (props) => {
     const id = props.id;
     const stock1 = useSelector(state => state.counter.values[id].stock);
     const quantity1 = useSelector(state => state.counter.values[id].quantity);
+    const tempQ = useSelector(state => state.counter.values[id].tempQ);
+    console.log(tempQ);
+
 
     useEffect(() => {
         dispatch(setValues({
             id: props.id,
             quantity: quantity1, // props.quantity would reset it to 0 when switching
-            stock: stock1, // props.stock would reset it to 0 when switching 
+            stock: stock1, // props.stock would reset it to 0 when switching
+            tempQ: 0, 
             price: props.price,
             label: props.label
-        }))
+        }));
     }, []); // second argument to prevent infinite loop
+
     return (
         <div style={productStyle}>
-            <Button variant="outline-dark" style={buttonStyle}>Do koszyka</Button>
+            <Button variant="outline-dark" style={buttonStyle} onClick={() => { setValues() }}>Do koszyka</Button>
             <img style={imgStyle} src={props.src}></img>
             <div style={labelStyle}>{props.label}</div>
             <div style={labelStyle}>{props.price}zł</div>
             <div style={spanStyle}>
                 <Button style={buttonStyle2} variant="outline-dark" onClick={() => {
                     dispatch(decrement(id));
-                    }}>-</Button>
-                <span>{val[id].quantity}</span>
-                <Button style={buttonStyle2} variant= "outline-dark" onClick={() => {
-                    dispatch(increment(id))}}>+</Button>
+                }}>-</Button>
+                <span>{tempQ}</span>
+                <Button style={buttonStyle2} variant="outline-dark" onClick={() => {
+                    dispatch(increment(id))
+                }}>+</Button>
             </div>
-            <span style={stockStyle}>{val[id].stock} left</span>
+            <span style={stockStyle}>{val[id].tempQ} left</span>
         </div>
     )
 }

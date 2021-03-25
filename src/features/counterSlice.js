@@ -5,12 +5,12 @@ export const counterSlice = createSlice({
   initialState: {
     values: // this structure lacks scalability 
       [
-        {id: 1, quantity: 0 , stock: 10, price: 0, label: ''},
-        {id: 2, quantity: 0 , stock: 10, price: 0, label: ''},
-        {id: 3, quantity: 0 , stock: 10, price: 0, label: ''},
-        {id: 4, quantity: 0 , stock: 10, price: 0, label: ''},
-        {id: 5, quantity: 0 , stock: 10, price: 0, label: ''},
-        {id: 6, quantity: 0 , stock: 10, price: 0, label: ''},
+        {id: 1, tempQ: 0, quantity: 0 , stock: 10, price: 0, label: ''},
+        {id: 2, tempQ: 0,quantity: 0 , stock: 10, price: 0, label: ''},
+        {id: 3, tempQ: 0, quantity: 0 , stock: 10, price: 0, label: ''},
+        {id: 4, tempQ: 0, quantity: 0 , stock: 10, price: 0, label: ''},
+        {id: 5, tempQ: 0,quantity: 0 , stock: 10, price: 0, label: ''},
+        {id: 6, tempQ: 0,quantity: 0 , stock: 10, price: 0, label: ''},
       ]
     ,
     i: 0
@@ -18,12 +18,12 @@ export const counterSlice = createSlice({
   reducers: {
     increment: (state, action) => {
       const i = action.payload;
-      state.values[i].quantity += 1;
+      state.values[i].tempQ += 1;
     },
     decrement: (state, action) => {
       const i = action.payload;
-      if(state.values[i].quantity>0)
-        state.values[i].quantity -= 1;
+      if(state.values[i].tempQ>0)
+        state.values[i].tempQ -= 1;
     },
     setValues: (state,action) => {
       const i = action.payload;
