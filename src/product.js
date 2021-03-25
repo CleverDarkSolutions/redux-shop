@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import store from './app/store';
 
 let productStyle = {
-    width: '20em',
+    width: '25em',
     height: '45em',
     borderRadius: '2em',
     border: '#909090 solid 2px',
