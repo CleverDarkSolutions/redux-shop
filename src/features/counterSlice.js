@@ -3,11 +3,14 @@ import { createSlice } from '@reduxjs/toolkit';
 export const counterSlice = createSlice({
   name: 'counter',
   initialState: {
-    values: 
+    values: // this structure lacks scalability 
       [
-        {id: 1, stock: 0 , price: 0, label: ''},
-        {id: 2, stock: 0 , price: 0, label: ''},
-        {id: 3, stock: 0 , price: 0, label: ''}
+        {id: 1, quantity: 0 , stock: 10, price: 0, label: ''},
+        {id: 2, quantity: 0 , stock: 10, price: 0, label: ''},
+        {id: 3, quantity: 0 , stock: 10, price: 0, label: ''},
+        {id: 4, quantity: 0 , stock: 10, price: 0, label: ''},
+        {id: 5, quantity: 0 , stock: 10, price: 0, label: ''},
+        {id: 6, quantity: 0 , stock: 10, price: 0, label: ''},
       ]
     ,
     i: 0
@@ -15,12 +18,12 @@ export const counterSlice = createSlice({
   reducers: {
     increment: (state, action) => {
       const i = action.payload;
-      state.values.stock[i] += 1;
+      state.values[i].quantity += 1;
     },
     decrement: (state, action) => {
       const i = action.payload;
-      if(state.values.stock[i]>0)
-        state.values.stock[i] -= 1;
+      if(state.values[i].quantity>0)
+        state.values[i].quantity -= 1;
     },
     setValues: (state,action) => {
       const i = action.payload;

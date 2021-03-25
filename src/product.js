@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Button } from 'react-bootstrap';
 import { increment, decrement, setValues } from './features/counterSlice';
 import { useDispatch, useSelector } from 'react-redux';
@@ -6,9 +6,10 @@ import store from './app/store';
 
 let productStyle = {
     width: '20em',
-    height: '40em',
-    background: '#F0F8FF',
+    height: '45em',
     borderRadius: '2em',
+    border: '#909090 solid 2px',
+    background: '#F0F0F0',
     position: 'relative',
     top: '5em',
     float: 'left',
@@ -32,7 +33,11 @@ let labelStyle = {
 let buttonStyle = {
     position: 'absolute',
     right: '0.5em',
-    top: '1em'
+    top: '1em',
+}
+
+let buttonStyle2 = {
+    margin: '1em'
 }
 
 let spanStyle = {
@@ -41,30 +46,46 @@ let spanStyle = {
     fontSize: '2em'
 }
 
+let stockStyle = {
+    fontSize: '1em',
+    color: 'black',
+    position: 'absolute',
+    fontWeight: 'bold',
+    top: '1em',
+    left: '3em'
+}
+
 const ProductElement = (props) => {
-    const val = useSelector(state => state.counter.values.stock);
+    const val = useSelector(state => state.counter.values);
     const dispatch = useDispatch();
     const id = props.id;
-    dispatch(setValues({
-        id : props.id,
-        stock : props.stock,
-        price : props.price,
-        label : props.label
-    }))
+    const stock1 = useSelector(state => state.counter.values[id].stock);
+    const quantity1 = useSelector(state => state.counter.values[id].quantity);
+
+    useEffect(() => {
+        dispatch(setValues({
+            id: props.id,
+            quantity: quantity1, // props.quantity would reset it to 0 when switching
+            stock: stock1, // props.stock would reset it to 0 when switching 
+            price: props.price,
+            label: props.label
+        }))
+    }, []); // second argument to prevent infinite loop
     return (
         <div style={productStyle}>
-            <Button style={buttonStyle}>Do koszyka</Button>
+            <Button variant="outline-dark" style={buttonStyle}>Do koszyka</Button>
             <img style={imgStyle} src={props.src}></img>
             <div style={labelStyle}>{props.label}</div>
             <div style={labelStyle}>{props.price}zł</div>
             <div style={spanStyle}>
-                <Button onClick={() => {
+                <Button style={buttonStyle2} variant="outline-dark" onClick={() => {
                     dispatch(decrement(id));
                     }}>-</Button>
-                <span>{val[id]}</span>
-                <Button onClick={() => { 
+                <span>{val[id].quantity}</span>
+                <Button style={buttonStyle2} variant= "outline-dark" onClick={() => {
                     dispatch(increment(id))}}>+</Button>
             </div>
+            <span style={stockStyle}>{val[id].stock} left</span>
         </div>
     )
 }
