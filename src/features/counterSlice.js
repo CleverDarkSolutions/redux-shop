@@ -18,7 +18,8 @@ export const counterSlice = createSlice({
   reducers: {
     increment: (state, action) => {
       const i = action.payload;
-      state.values[i].tempQ += 1;
+      if(state.values[i].tempQ<state.values[i].stock)
+          state.values[i].tempQ += 1;
     },
     decrement: (state, action) => {
       const i = action.payload;

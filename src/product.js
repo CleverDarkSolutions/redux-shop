@@ -78,7 +78,15 @@ const ProductElement = (props) => {
 
     return (
         <div style={productStyle}>
-            <Button variant="outline-dark" style={buttonStyle} onClick={() => { setValues() }}>Do koszyka</Button>
+            <Button variant="outline-dark" style={buttonStyle} onClick={() => {
+                dispatch(setValues({
+                    id: props.id,
+                    quantity: tempQ, // props.quantity would reset it to 0 when switching
+                    stock: stock1, // props.stock would reset it to 0 when switching
+                    tempQ: 0,
+                    price: props.price,
+                    label: props.label
+                }))}}>Do koszyka</Button>
             <img style={imgStyle} src={props.src}></img>
             <div style={labelStyle}>{props.label}</div>
             <div style={labelStyle}>{props.price}zł</div>
@@ -91,7 +99,7 @@ const ProductElement = (props) => {
                     dispatch(increment(id))
                 }}>+</Button>
             </div>
-            <span style={stockStyle}>{val[id].tempQ} left</span>
+            <span style={stockStyle}>{val[id].stock} left</span>
         </div>
     )
 }
