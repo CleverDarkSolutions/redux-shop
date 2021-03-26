@@ -41,7 +41,7 @@ const Navbar = (props) => {
                         <a className="nav-link" onClick={props.functionTwo}>Koszyk</a>
                     </li>
                     <li className="nav-item list-inline-item" style={navElement3} >
-                        <a className="nav-link" onClick={props.functionThree}>Empty</a>
+                        <a className="nav-link" onClick={props.functionThree}>Stock</a>
                     </li>
 
                     <li className="nav-item list-inline-item" style={navElement4} >

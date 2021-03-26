@@ -81,10 +81,10 @@ const ProductElement = (props) => {
             <Button variant="outline-dark" style={buttonStyle} onClick={() => {
                 dispatch(setValues({
                     id: props.id,
-                    quantity: tempQ, // props.quantity would reset it to 0 when switching
-                    stock: stock1, // props.stock would reset it to 0 when switching
+                    quantity: val[id].quantity + tempQ, // adding to already existing quantity 
+                    stock: stock1,
                     tempQ: 0,
-                    price: props.price,
+                    price: Number(props.price),
                     label: props.label
                 }))}}>Do koszyka</Button>
             <img style={imgStyle} src={props.src}></img>

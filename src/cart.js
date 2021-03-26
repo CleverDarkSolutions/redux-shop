@@ -15,6 +15,14 @@ const Cart = () => {
         <CartElement key={index} id={item.id} productName={item.label} productPrice={item.price} productQuantity={item.quantity}></CartElement>
     ));
 
+    const total = (arr) => {
+        let sum=0
+        for(let i=0;i<arr.length;i++){
+            sum += arr[i].price * arr[i].amount;
+        }
+        return sum;
+    }
+
     return (
         <div>
             <h3>Your cart</h3>
