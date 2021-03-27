@@ -92,11 +92,11 @@ const ProductElement = (props) => {
             <div style={labelStyle}>{props.price}zł</div>
             <div style={spanStyle}>
                 <Button style={buttonStyle2} variant="outline-dark" onClick={() => {
-                    dispatch(decrement(id));
+                    dispatch(decrement({id : id, which: 'tempQ'}));
                 }}>-</Button>
                 <span>{tempQ}</span>
                 <Button style={buttonStyle2} variant="outline-dark" onClick={() => {
-                    dispatch(increment(id))
+                    dispatch(increment({id: id, which: 'tempQ'}))
                 }}>+</Button>
             </div>
             <span style={stockStyle}>{val[id].stock} left</span>
