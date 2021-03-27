@@ -16,9 +16,9 @@ const StockElement = (props) => {
                 <td scope="row">{props.id}</td>
                 <td>{props.productName}</td>
                 <td>
-                    <Button onClick={() => { dispatch(decrement({ id: id, which: 'stock'})) }} style={buttonStyle}>-</Button>
+                    <Button variant="outline-dark" onClick={() => { dispatch(decrement({ id: id, which: 'stock'})) }} style={buttonStyle}>-</Button>
                     {props.productStock}
-                    <Button onClick={() => { dispatch(increment({ id: id, which: 'stock'})) }} style={buttonStyle}>+</Button>
+                    <Button variant="outline-dark" onClick={() => { dispatch(increment({ id: id, which: 'stock'})) }} style={buttonStyle}>+</Button>
                 </td>
             </tr>
         )

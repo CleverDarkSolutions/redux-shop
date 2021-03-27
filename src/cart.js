@@ -3,6 +3,7 @@ import CartElement from './cartElement';
 import store from './app/store';
 import {Button} from 'react-bootstrap';
 import { useSelector } from 'react-redux';
+import InfoElement from './infoElement';
 
 let tableStyle = {
     width: '60%',
@@ -41,10 +42,16 @@ const Cart = () => {
                         <th scope="row"></th>
                         <th scope="row">Summary</th>
                         <th scope="row" colSpan="2">Total: {total(items)} zł</th>
-                        <th scope="row"><Button>To payment</Button></th>
+                        <th scope="row"><Button variant="success">To payment</Button></th>
                     </tr>
                 </tbody>
             </table>
+            <InfoElement title="Szybka wysyłka" description="Zawozimy waszą paczke w zawrotne 2 dni robocze i nie tolerujemy opóźnień!"
+            ></InfoElement>
+            <InfoElement title="Gwarancja jakości" description="Nasze towary pochodzą od zaufanych dostawców i marek rozpoznawalnych na całym świecie"
+            ></InfoElement>
+            <InfoElement title="30 dni na zwrot" description="Jeżeli nie spodoba ci się nasz produkt, możesz bez podania powodu odesłać go w ciągu 30 dni"
+            ></InfoElement>
         </div>
     )
 }

@@ -24,9 +24,9 @@ const CartElement = (props) => {
                 <td>{props.productName}</td>
                 <td>{props.productPrice} zł</td>
                 <td>
-                <Button style={buttonStyle} onClick={() => { dispatch(decrement({ id: id, which: 'quantity' })) }}>-</Button>
+                <Button variant="outline-dark" style={buttonStyle} onClick={() => { dispatch(decrement({ id: id, which: 'quantity' })) }}>-</Button>
                     {props.productQuantity}
-                <Button style={buttonStyle} onClick={() => { dispatch(increment({ id: id, which: 'quantity' })) }}>+</Button>
+                <Button variant="outline-dark" style={buttonStyle} onClick={() => { dispatch(increment({ id: id, which: 'quantity' })) }}>+</Button>
                 </td>
 
                 <td><Button variant="danger" onClick={() => {
