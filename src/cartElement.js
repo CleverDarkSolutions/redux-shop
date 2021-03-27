@@ -22,7 +22,7 @@ const CartElement = (props) => {
             <tr style={elementStyle}>
                 <td scope="row">{props.id}</td>
                 <td>{props.productName}</td>
-                <td>{props.productPrice}</td>
+                <td>{props.productPrice} zł</td>
                 <td>
                 <Button style={buttonStyle} onClick={() => { dispatch(decrement({ id: id, which: 'quantity' })) }}>-</Button>
                     {props.productQuantity}
@@ -36,8 +36,8 @@ const CartElement = (props) => {
                         quantity: 0, // setting quantity to 0 after deleting
                         stock: 10,
                         tempQ: 0,
-                        price: props.price,
-                        label: props.label
+                        price: props.productPrice,
+                        label: props.productName
                     }))
                 }}>X</Button></td>
             </tr>

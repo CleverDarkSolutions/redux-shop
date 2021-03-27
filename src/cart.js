@@ -1,6 +1,7 @@
 import React from 'react';
 import CartElement from './cartElement';
 import store from './app/store';
+import {Button} from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 
 let tableStyle = {
@@ -18,11 +19,11 @@ const Cart = () => {
     const total = (arr) => {
         let sum=0
         for(let i=0;i<arr.length;i++){
-            sum += arr[i].price * arr[i].amount;
+            sum += Number(arr[i].price) * Number(arr[i].quantity);
         }
-        return sum;
+        return Number(sum);
     }
-
+    console.log(items);
     return (
         <div>
             <h3>Your cart</h3>
@@ -39,9 +40,8 @@ const Cart = () => {
                     <tr>
                         <th scope="row"></th>
                         <th scope="row">Summary</th>
-                        <th></th>
-                        <th></th>
-                        <td></td>
+                        <th scope="row" colSpan="2">Total: {total(items)} zł</th>
+                        <th scope="row"><Button>To payment</Button></th>
                     </tr>
                 </tbody>
             </table>
