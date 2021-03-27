@@ -13,7 +13,7 @@ export const counterSlice = createSlice({
         {id: 6, tempQ: 0,quantity: 0 , stock: 10, price: 0, label: ''},
       ]
     ,
-    i: 0
+    i: 0,
   },
   reducers: {
     increment: (state, action) => {
@@ -26,6 +26,17 @@ export const counterSlice = createSlice({
       if(state.values[i].tempQ>0)
         state.values[i].tempQ -= 1;
     },
+
+    incrementStock: (state,action) => {
+      const i = action.payload;
+      state.values[i].stock +=1; 
+    },
+
+    decrementStock: (state, action) => {
+      const i = action.payload;
+      state.values[i].stock -= 1;
+    },
+
     setValues: (state,action) => {
       const i = action.payload;
       state.values[i.id] = i;
@@ -33,7 +44,7 @@ export const counterSlice = createSlice({
   },
 });
 
-export const { increment, decrement, setValues} = counterSlice.actions;
+export const { increment, decrement, setValues, decrementStock, incrementStock} = counterSlice.actions;
 
 
 export default counterSlice.reducer;

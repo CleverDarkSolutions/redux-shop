@@ -33,7 +33,7 @@ const CartElement = (props) => {
     )
    }
    else{
-       return '';
+       return ''; // prevents rendering empty rows
    }
 }
 
