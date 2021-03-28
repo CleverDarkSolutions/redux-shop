@@ -2,8 +2,10 @@ import React from 'react';
 import CartElement from './cartElement';
 import store from './app/store';
 import {Button} from 'react-bootstrap';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import InfoElement from './infoElement';
+import Checkout from './checkout';
+import {showPayment} from './features/mainSlice';
 
 let tableStyle = {
     width: '60%',
@@ -11,6 +13,8 @@ let tableStyle = {
 }
 
 const Cart = () => {
+    const dispatch = useDispatch();
+    const payment = useSelector(state => state.switches.payment);
     const items = useSelector(state => state.counter.values);
     console.log(items);
     const componentsToRender = items.map((item, index) => (
@@ -20,7 +24,7 @@ const Cart = () => {
     const total = (arr) => {
         let sum=0
         for(let i=0;i<arr.length;i++){
-            sum += Number(arr[i].price) * Number(arr[i].quantity);
+            sum += Number(arr[i].price) * Number(arr[i].quantity); // preventing adding items of quantity 0
         }
         return Number(sum);
     }
@@ -42,7 +46,9 @@ const Cart = () => {
                         <th scope="row"></th>
                         <th scope="row">Summary</th>
                         <th scope="row" colSpan="2">Total: {total(items)} zł</th>
-                        <th scope="row"><Button variant="success">To payment</Button></th>
+                        <th scope="row"><Button variant="success" onClick={()=>{
+                            dispatch(showPayment()) // toggle div
+                        }}>To payment</Button></th>
                     </tr>
                 </tbody>
             </table>
@@ -52,6 +58,8 @@ const Cart = () => {
             ></InfoElement>
             <InfoElement title="30 dni na zwrot" description="Jeżeli nie spodoba ci się nasz produkt, możesz bez podania powodu odesłać go w ciągu 30 dni"
             ></InfoElement>
+
+            {payment && <Checkout total={total(items)}zł></Checkout> }
         </div>
     )
 }

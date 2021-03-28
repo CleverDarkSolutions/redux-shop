@@ -56,20 +56,16 @@ let stockStyle = {
 }
 
 const ProductElement = (props) => {
-    const val = useSelector(state => state.counter.values);
     const dispatch = useDispatch();
     const id = props.id;
-    const stock1 = useSelector(state => state.counter.values[id].stock);
-    const quantity1 = useSelector(state => state.counter.values[id].quantity);
-    const tempQ = useSelector(state => state.counter.values[id].tempQ);
-    console.log(tempQ);
+    const items = useSelector(state => state.counter.values);
 
-
-    useEffect(() => {
+    // This hook updates all product data in state
+    useEffect(() => { 
         dispatch(setValues({
-            id: props.id,
-            quantity: quantity1, // props.quantity would reset it to 0 when switching
-            stock: stock1, // props.stock would reset it to 0 when switching
+            id: id,
+            quantity: items[id].quantity, // props.quantity would reset it to 0 when switching
+            stock: items[id].stock, // props.stock would reset it to 0 when switching
             tempQ: 0, 
             price: props.price,
             label: props.label
@@ -79,10 +75,10 @@ const ProductElement = (props) => {
     return (
         <div style={productStyle}>
             <Button variant="outline-dark" style={buttonStyle} onClick={() => {
-                dispatch(setValues({
+                dispatch(setValues({ // adding to cart after user confirmation
                     id: props.id,
-                    quantity: val[id].quantity + tempQ, // adding to already existing quantity 
-                    stock: stock1,
+                    quantity: items[id].quantity + items[id].tempQ, // adding to already existing quantity 
+                    stock: items[id].stock,
                     tempQ: 0,
                     price: Number(props.price),
                     label: props.label
@@ -94,12 +90,12 @@ const ProductElement = (props) => {
                 <Button style={buttonStyle2} variant="outline-dark" onClick={() => {
                     dispatch(decrement({id : id, which: 'tempQ'}));
                 }}>-</Button>
-                <span>{tempQ}</span>
+                <span>{items[id].tempQ}</span>
                 <Button style={buttonStyle2} variant="outline-dark" onClick={() => {
                     dispatch(increment({id: id, which: 'tempQ'}))
                 }}>+</Button>
             </div>
-            <span style={stockStyle}>{val[id].stock} left</span>
+            <span style={stockStyle}>{items[id].stock} left</span>
         </div>
     )
 }

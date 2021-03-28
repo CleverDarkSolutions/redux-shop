@@ -9,6 +9,7 @@ import {useDispatch,useSelector} from 'react-redux';
 import {show1,show2,show3} from './features/mainSlice';
 import {useState} from 'react';
 import Stock from './stock';
+import Blur from 'react-css-blur';
 
 
 function App() {

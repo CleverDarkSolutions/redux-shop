@@ -14,10 +14,10 @@ let buttonStyle = {
 }
 
 const CartElement = (props) => {
-    const [state,setState] = useState(1);
     const dispatch = useDispatch();
-    const id = props.id
-   if(props.productQuantity>0 && state == 1){
+    const id = props.id;
+    const items = useSelector(state => state.counter.values)
+   if(props.productQuantity>0){
     return(
             <tr style={elementStyle}>
                 <td scope="row">{props.id}</td>
@@ -30,11 +30,10 @@ const CartElement = (props) => {
                 </td>
 
                 <td><Button variant="danger" onClick={() => {
-                    setState(0);
                     dispatch(setValues({
                         id: props.id,
                         quantity: 0, // setting quantity to 0 after deleting
-                        stock: 10,
+                        stock: items[id].stock,
                         tempQ: 0,
                         price: props.productPrice,
                         label: props.productName
