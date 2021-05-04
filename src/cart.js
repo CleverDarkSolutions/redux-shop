@@ -48,6 +48,7 @@ const Cart = () => {
                         <th scope="row" colSpan="2">Total: {total(items)} zł</th>
                         <th scope="row"><Button variant="success" onClick={()=>{
                             dispatch(showPayment()) // toggle div
+                            //document.body.style.filter = "blur(5px)"; // retarded solution
                         }}>To payment</Button></th>
                     </tr>
                 </tbody>

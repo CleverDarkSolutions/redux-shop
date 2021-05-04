@@ -5,11 +5,15 @@ import { increment, decrement } from './features/counterSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import store from './app/store';
 
+let style = {
+    margin: 'auto'
+}
+
 
 const ProductCollection = () => {
     const dispatch = useDispatch();
     return (
-        <div>
+        <div style={style}>
             <ProductElement 
             id="0" src="https://i.pinimg.com/736x/6d/b6/af/6db6af53e670cc719a8380c2fa292204.jpg" label="Dres od adasia" price="100">
             </ProductElement>

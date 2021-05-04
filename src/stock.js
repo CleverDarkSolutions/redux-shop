@@ -7,13 +7,17 @@ let tableStyle = {
     margin: 'auto'
 }
 
+let style = {
+    marginTop: '5em'
+}
+
 const Stock = () => {
     const items = useSelector(state => state.counter.values);
     const componentsToRender = items.map((item, index) => (
         <StockElement key={index} id={item.id} productName={item.label} productStock={item.stock}></StockElement>
     ));
     return (
-        <div>
+        <div style={style}>
             <table style={tableStyle} className="table table-bordered">
                 <thead>
                     <tr>
