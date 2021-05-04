@@ -9,15 +9,7 @@ import {useDispatch,useSelector} from 'react-redux';
 import {show1,show2,show3} from './features/mainSlice';
 import {useState} from 'react';
 import Stock from './stock';
-<<<<<<< HEAD
 import Blur from 'react-css-blur';
-import {
-  FirebaseAuthProvider,
-  FirebaseAuthConsumer
-} from "@react-firebase/auth";
-=======
->>>>>>> parent of 039195d (optimalization)
-
 
 function App() {
   const dispatch = useDispatch();
@@ -25,17 +17,13 @@ function App() {
   const console1 = useSelector(state => state.counter.values[1]);
   console.log(console1);
   console.log(subMenu);
-  return (
-    <FirebaseAuthProvider firebase={firebase}>
+  return(
     <div className="App">
-      <FirebaseAuthConsumer>
       <Navbar functionOne={() => { dispatch(show1()); }} functionTwo={() => { dispatch(show2()); }} functionThree={() => {dispatch(show3())}}></Navbar>
       {subMenu.subMenu1 && <ProductCollection></ProductCollection>}
       {subMenu.subMenu2 && <Cart></Cart>}
       {subMenu.subMenu3 && <Stock></Stock>}
-      </FirebaseAuthConsumer>
     </div>
-    </FirebaseAuthProvider>
   );
 }
 
