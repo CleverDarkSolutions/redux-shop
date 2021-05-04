@@ -9,11 +9,14 @@ import {useDispatch,useSelector} from 'react-redux';
 import {show1,show2,show3} from './features/mainSlice';
 import {useState} from 'react';
 import Stock from './stock';
+<<<<<<< HEAD
 import Blur from 'react-css-blur';
 import {
   FirebaseAuthProvider,
   FirebaseAuthConsumer
 } from "@react-firebase/auth";
+=======
+>>>>>>> parent of 039195d (optimalization)
 
 
 function App() {

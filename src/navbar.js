@@ -45,7 +45,7 @@ const Navbar = (props) => {
                     </li>
 
                     <li className="nav-item list-inline-item" style={navElement4} >
-                        <a className="nav-link" onClick={props.functionFour}></a>
+                        <a className="nav-link" onClick={props.functionFour}>Empty</a>
                     </li>
                 </ul>
 

@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 export const counterSlice = createSlice({
   name: 'counter',
   initialState: {
-    values: // this structure lacks scalability, but is convinient 
+    values: // this structure lacks scalability 
       [
         { id: 1, tempQ: 0, quantity: 0, stock: 10, price: 0, label: '' },
         { id: 2, tempQ: 0, quantity: 0, stock: 10, price: 0, label: '' },
@@ -18,7 +18,7 @@ export const counterSlice = createSlice({
   reducers: {
     increment: (state, action) => {
       const i = action.payload.id;
-      switch (action.payload.which) { // switch is better than doing 3 different reducers
+      switch (action.payload.which) {
         case 'tempQ':
           if (state.values[i].tempQ < state.values[i].stock)
             state.values[i].tempQ += 1;
