@@ -1,3 +1,6 @@
+This is my latest and most complex project so far. I use React with Redux to build a simple store. The project is not fully finished yet, payment window is not ready.
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 
 ## Available Scripts
